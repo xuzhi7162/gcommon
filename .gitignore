@@ -10,6 +10,22 @@
 
 # Output of the go coverage tool, specifically when used with LiteIDE
 *.out
+# idea ignore
+.idea/
+*.ipr
+*.iml
+*.iws
 
+*.swp
+
+# temp ignore
+*.log
+*.cache
+*.diff
+*.exe
+*.exe~
+*.patch
+*.tmp
+*debug.test
 # Dependency directories (remove the comment below to include it)
 # vendor/
