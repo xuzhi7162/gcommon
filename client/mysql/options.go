@@ -11,3 +11,15 @@ type MySQLOptions struct {
 	MaxOpenConnections    int           `json:"maxOpenConnections,omitempty" yaml:"maxOpenConnections"`
 	MaxConnectionLifeTime time.Duration `json:"maxConnectionLifeTime,omitempty" yaml:"maxConnectionLifeTime"`
 }
+
+func NewMySQLOptions() *MySQLOptions {
+	return &MySQLOptions{
+		Host:                  "127.0.0.1",
+		DbName:                "db",
+		Username:              "root",
+		Password:              "root",
+		MaxIdleConnections:    150,
+		MaxOpenConnections:    150,
+		MaxConnectionLifeTime: 10000,
+	}
+}
