@@ -4,8 +4,8 @@ import (
 	"fmt"
 	log "github.com/sirupsen/logrus"
 	"github.com/spf13/viper"
-	"github.com/xuzhi7162/gcommon/pkg/client/mysql"
-	"github.com/xuzhi7162/gcommon/pkg/client/redis"
+	"github.com/xuzhi7162/gcommon/client/mysql"
+	"github.com/xuzhi7162/gcommon/client/redis"
 )
 
 var ShareConfig *Config
