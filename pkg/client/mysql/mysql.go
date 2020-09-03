@@ -7,10 +7,9 @@ import (
 	"gorm.io/gorm"
 )
 
-type MysqlClient interface {
-}
+var _db *gorm.DB
 
-func NewMySQLClient(options *MySQLOptions) *gorm.DB {
+func NewMySQLClient(options *MySQLOptions) {
 	mysqlURL := fmt.Sprintf("%s:%s@tcp(%s)/%s?parseTime=1&multiStatements=1&charset=utf8&collation=utf8_general_ci",
 		options.Username,
 		options.Password,
@@ -22,7 +21,7 @@ func NewMySQLClient(options *MySQLOptions) *gorm.DB {
 	}
 	// 配置数据库连接池
 	configSQLPool(db, options)
-	return db
+	_db = db
 }
 
 func configSQLPool(db *gorm.DB, options *MySQLOptions) {
@@ -34,4 +33,8 @@ func configSQLPool(db *gorm.DB, options *MySQLOptions) {
 	sqlDB.SetMaxIdleConns(options.MaxIdleConnections)
 	sqlDB.SetMaxOpenConns(options.MaxOpenConnections)
 	sqlDB.SetConnMaxLifetime(options.MaxConnectionLifeTime)
+}
+
+func getDB() *gorm.DB {
+	return _db
 }
